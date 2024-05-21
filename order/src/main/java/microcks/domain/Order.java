@@ -26,15 +26,14 @@ public class Order {
 
     @PostPersist
     public void onPostPersist() {
-        //Following code causes dependency to external APIs
-        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
         microcks.external.DecreaseStockCommand decreaseStockCommand = new microcks.external.DecreaseStockCommand();
-        // mappings goes here
+        
+        decreaseStockCommand.setQty(getQty());
+
         OrderApplication.applicationContext
             .getBean(microcks.external.InventoryService.class)
-            .decreaseStock(/* get???(), */decreaseStockCommand);
-
+            .decreaseStock(Long.valueOf(getProductId()), decreaseStockCommand);
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
     }
