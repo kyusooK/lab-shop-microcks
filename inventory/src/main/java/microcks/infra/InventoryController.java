@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//<<< Clean Arch / Inbound Adaptor
 
 @RestController
 // @RequestMapping(value="/inventories")
@@ -44,4 +43,3 @@ public class InventoryController {
         return inventory;
     }
 }
-//>>> Clean Arch / Inbound Adaptor

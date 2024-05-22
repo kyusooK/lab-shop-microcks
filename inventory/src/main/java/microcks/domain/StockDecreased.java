@@ -1,12 +1,9 @@
 package microcks.domain;
 
-import java.time.LocalDate;
-import java.util.*;
 import lombok.*;
 import microcks.domain.*;
 import microcks.infra.AbstractEvent;
 
-//<<< DDD / Domain Event
 @Data
 @ToString
 public class StockDecreased extends AbstractEvent {
@@ -22,4 +19,3 @@ public class StockDecreased extends AbstractEvent {
         super();
     }
 }
-//>>> DDD / Domain Event

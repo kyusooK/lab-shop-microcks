@@ -1,17 +1,12 @@
 package microcks.domain;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import microcks.OrderApplication;
-import microcks.domain.OrderPlaced;
 
 @Entity
 @Table(name = "Order_table")
 @Data
-//<<< DDD / Aggregate Root
 public class Order {
 
     @Id
@@ -45,4 +40,3 @@ public class Order {
         return orderRepository;
     }
 }
-//>>> DDD / Aggregate Root

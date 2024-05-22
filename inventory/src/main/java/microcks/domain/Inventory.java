@@ -1,8 +1,5 @@
 package microcks.domain;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import microcks.InventoryApplication;
@@ -10,7 +7,6 @@ import microcks.InventoryApplication;
 @Entity
 @Table(name = "Inventory_table")
 @Data
-//<<< DDD / Aggregate Root
 public class Inventory {
 
     @Id
@@ -29,15 +25,11 @@ public class Inventory {
         return inventoryRepository;
     }
 
-    //<<< Clean Arch / Port Method
     public void decreaseStock(DecreaseStockCommand decreaseStockCommand) {
-        //implement business logic here:
         setStock(getStock() - decreaseStockCommand.getQty());
         
         StockDecreased stockDecreased = new StockDecreased(this);
         stockDecreased.publishAfterCommit();
     }
-    //>>> Clean Arch / Port Method
 
 }
-//>>> DDD / Aggregate Root
